@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor de Discord</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #020e1f;
+            color: white;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInSidebar {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Barra superior estilo Dynamic Island */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 15%;
+            transform: translateX(0%);
+            width: 70%;
+            background-color: #121212;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Barra lateral adaptada */
+        .sidebar {
+            position: fixed;
+            top: 35%;
+            left: 10px;
+            width: 60px;
+            height: auto;
+            background-color: #1a1a2e; /* Color adaptado */
+            color: white;
+            padding: 10px;
+            border-radius: 30px;
+            transform: translateY(0%);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            animation: slideInSidebar 1s ease-out;
+        }
+
+        .sidebar a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #505050;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #d1d1d1;
+            transform: scale(1.1);
+        }
+
+        .sidebar a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Contenido principal */
+        .content {
+            margin-left: 80px; /* Espacio para la barra compacta */
+            padding: 20px;
+            padding-top: 80px; /* Espacio para la barra superior */
+        }
+
+        h1 {
+            color: #8a8a8a;
+        }
+
+        /* Cuadro de reglas */
+        .rules-box {
+            margin: 50px auto;
+            width: 80%;
+            background-color: #1f1f2e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            color: white;
+            animation: popIn 1.2s ease-out;
+        }
+
+        .rules-box h2 {
+            margin-top: 0;
+            color: #d1d1d1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        EAM / AMT - Reglas
+    </div>
+
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <a href="index.html" title="Reglas">
+            <img src="https://images.vexels.com/media/users/3/139752/isolated/preview/532e26143a0435e9c6ca7f436474389f-icono-de-libros.png" alt="Reglas">
+        </a>
+        <a href="soporte.html" title="Soporte">
+            <img src="https://www.svgrepo.com/show/51577/right-settings.svg" alt="Soporte">
+        </a>
+        <a href="https://termofuseamt.wordpress.com/" title="Términos">
+            <img src="https://www.svgrepo.com/show/350269/check.svg" alt="Términos">
+        </a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h1>Bienvenido</h1>
+        <p>Recuerda leer las reglas para tener un ambiente seguro.</p>
+
+        <!-- Cuadro de reglas -->
+        <div class="rules-box">
+            <h2>Reglas</h2>
+            <ul>
+                <li>Regla 1: Sé respetuoso con los demás.</li>
+                <li>Regla 2: No compartas contenido ofensivo.</li>
+                <li>Regla 3: Sigue las directrices del servidor.</li>
+            </ul>
+        </div>
+    </div>
+
+ 
+</body>
+
+</html>

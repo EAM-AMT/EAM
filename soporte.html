@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor de Discord - Soporte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #020e1f;
+            color: white;
+        }
+
+        /* Barra superior estilo Dynamic Island */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 15%;
+            width: 70%;
+            background-color: #121212;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        /* Barra lateral adaptada */
+        .sidebar {
+            position: fixed;
+            top: 35%;
+            left: 10px;
+            width: 60px;
+            height: auto;
+            background-color: #1a1a2e; /* Color adaptado */
+            color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sidebar a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #505050;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #d1d1d1;
+            transform: scale(1.1);
+        }
+
+        .sidebar a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Contenido principal */
+        .content {
+            margin-left: 80px;
+            padding: 20px;
+            padding-top: 80px;
+        }
+
+        h1 {
+            color: #8a8a8a;
+        }
+
+        /* Cuadro del formulario */
+        .form-box {
+            background-color: #1f1f2e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        form input, form textarea, form select, form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #505050;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #d1d1d1;
+            color: black;
+        }
+    </style>
+    <!-- Script de EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        EAM / AMT - Soporte
+    </div>
+
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <a href="index.html" title="Inicio">
+            <img src="https://images.vexels.com/media/users/3/139752/isolated/preview/532e26143a0435e9c6ca7f436474389f-icono-de-libros.png" alt="Inicio">
+        </a>
+        <a href="soporte.html" title="Soporte">
+            <img src="https://www.svgrepo.com/show/51577/right-settings.svg" alt="Soporte">
+        </a>
+        <a href="https://termofuseamt.wordpress.com/" title="Términos">
+            <img src="https://www.svgrepo.com/show/350269/check.svg" alt="Términos">
+        </a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h1>Bienvenido</h1>
+        <p>Por favor, llena el formulario para recibir soporte.</p>
+
+        <!-- Formulario de soporte -->
+        <div class="form-box">
+            <h2>Formulario de Soporte</h2>
+            <form id="supportForm">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Escribe un correo válido" required>
+
+                <label for="age">Edad:</label>
+                <input type="number" id="age" name="age" placeholder="Tu edad" required>
+
+                <label for="support-reason">Motivo del Soporte:</label>
+                <select id="support-reason" name="supportReason" required>
+                    <option value="" disabled selected>Selecciona un motivo</option>
+                    <option value="Problema técnico">Problema técnico</option>
+                    <option value="Consulta sobre reglas">Consulta sobre reglas</option>
+                    <option value="Reporte de usuario">Reporte de usuario</option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                <label for="discord-user">Usuario/ID de Discord:</label>
+                <input type="text" id="discord-user" name="discordUser" placeholder="Tu usuario o ID" required>
+
+                <label for="details">Razón del soporte:</label>
+                <textarea id="details" name="details" placeholder="Describe tu problema..." required></textarea>
+
+                <button type="submit">Enviar Soporte</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Inicializa EmailJS con la Public Key
+        (function() {
+            emailjs.init("erKyaDInwVmxmLA_f"); // Reemplázalo con tu Public Key de EmailJS
+        })();
+
+        // Manejo del envío del formulario
+        document.getElementById('supportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_b9l41u8", "template_s8mv6jm", this)
+                .then(function(response) {
+                    alert("Soporte enviado exitosamente.");
+                }, function(error) {
+                    alert("Error al enviar el soporte. Intenta nuevamente.");
+                });
+        });
+    </script>
+</body>
+</html>
